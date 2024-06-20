@@ -1,0 +1,32 @@
+* {
+  margin-top: 2rem;
+}
+.title {
+  background-color: #2d2d2d;
+  color: #fefefe;
+  text-align: left;
+}
+.icon {
+  background-color: #2d2d2d;
+  color: #fefefe;
+  text-align: right;
+}
+.accordian {
+  background-color: black;
+}
+.container {
+  background-color: black;
+}
+.wrapper{
+    background-color: black;
+}
+.answer {
+  color: #fefefe;
+  font-family: Montserrat, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  background-color: #2d2d2d;
+  font-size: medium;
+  line-height: 35px;
+}
