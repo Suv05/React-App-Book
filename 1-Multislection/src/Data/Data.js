@@ -21,7 +21,7 @@ const data = [
     id: "4",
     question: "Can I create an accordion component with a different framework ?",
     answer:
-      "Yes of course, it is very possible to create an accordion component with another framework.it is very possible to create an accordion component with another framework",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur blanditiis tenetur cumque velit. Placeat suscipit, minus distinctio animi alias autem.",
   },
 ];
 
