@@ -1,25 +1,55 @@
 import { useState } from "react";
 import data from "../Data/Data";
-import { BsPlusLg } from "react-icons/bs";
 
-function Accordian({}) {
-  const [selected, setSlected] = useState(null);
-  const handelOnClick = (getId) => {
-    setSlected(getId === selected ? null : getId);
+function Accordian() {
+  const [selected, setSelected] = useState(null);
+  const [enableMultiSelection, setEnableMultiSelection] = useState(false);
+  const [multiSelection, setMultiSelection] = useState([]);
+
+  const handleSingleSelection = (getId) => {
+    setSelected(getId === selected ? null : getId);
   };
+
+  const handleMultiSelection = (getId) => {
+    let cpyMultiple = [...multiSelection];
+    let findIfIdIsPresent = cpyMultiple.indexOf(getId);
+    if (findIfIdIsPresent === -1) {
+      cpyMultiple.push(getId);
+    } else {
+      cpyMultiple.splice(findIfIdIsPresent, 1);
+    }
+    setMultiSelection(cpyMultiple);
+  };
+
   return (
     <>
+      <div className="row">
+        <div className="col-6 mybtn ">
+          <button
+            className="btn btn-outline-warning"
+            onClick={() => setEnableMultiSelection(!enableMultiSelection)}
+          >
+            ENABLE
+          </button>
+        </div>
+      </div>
       <div className="wrapper">
         <div className="container">
           {data && data.length > 0
             ? data.map((items) => (
-                <div key={items.id}className="accordian">
+                <div key={items.id} className="accordian">
                   <div className="row">
                     <div className="title col-10">
                       <h3 className="mt-4">{items.question}</h3>
                     </div>
                     <div className="icon col-2 title">
-                      <span onClick={() => handelOnClick(items.id)}>
+                      <span
+                        onClick={() =>
+                          enableMultiSelection
+                            ? handleMultiSelection(items.id)
+                            : handleSingleSelection(items.id)
+                        }
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -40,13 +70,20 @@ function Accordian({}) {
                         </svg>
                       </span>
                     </div>
-                    {selected === items.id ? (
-                     
-                      <div className="answer">
-                        <hr />
-                        <h4>{items.answer}</h4></div>
-                    ) : null}
-                  </div>{" "}
+                    {enableMultiSelection
+                      ? multiSelection.indexOf(items.id) !== -1 && (
+                          <div className="answer">
+                            <hr />
+                            <h4>{items.answer}</h4>
+                          </div>
+                        )
+                      : selected === items.id && (
+                          <div className="answer">
+                            <hr />
+                            <h4>{items.answer}</h4>
+                          </div>
+                        )}
+                  </div>
                 </div>
               ))
             : null}
