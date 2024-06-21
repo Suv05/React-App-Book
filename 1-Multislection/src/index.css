@@ -17,8 +17,8 @@
 .container {
   background-color: black;
 }
-.wrapper{
-    background-color: black;
+.wrapper {
+  background-color: black;
 }
 .answer {
   color: #fefefe;
@@ -29,4 +29,7 @@
   background-color: #2d2d2d;
   font-size: medium;
   line-height: 35px;
+}
+.mybtn {
+  text-align: right;
 }
