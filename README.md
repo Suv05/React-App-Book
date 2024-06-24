@@ -13,3 +13,9 @@
 
 ### 5-Load More Products
 ![Screenshot 2024-06-23 143836](https://github.com/Suv05/React-App-Book/assets/113111710/f6427728-e08b-49dc-ab9c-47740a395eed)
+
+### 6-Tree view
+![Screenshot 2024-06-24 231638](https://github.com/Suv05/React-App-Book/assets/113111710/bf09d64d-ca77-47d1-b82c-b5033159d1ad)
+
+### 7-QRCODE Generetor
+![Screenshot 2024-06-25 004800](https://github.com/Suv05/React-App-Book/assets/113111710/e5eb1c04-537d-43d0-ae68-912156b959bb)
