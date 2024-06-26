@@ -23,3 +23,7 @@
 ### 8-Dark Theme
 ![Screen Recording 2024-06-26 004849](https://github.com/Suv05/React-App-Book/assets/113111710/57f47799-68d8-432a-93b9-6c2a9eb28bff)
 
+### 9-Custom Scroll Indicator
+![Screen Recording 2024-06-26 130022](https://github.com/Suv05/React-App-Book/assets/113111710/f57f8f2a-a6b6-4872-92df-1f390b765c2b)
+
+
