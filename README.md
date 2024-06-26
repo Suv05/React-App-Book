@@ -19,3 +19,7 @@
 
 ### 7-QRCODE Generetor
 ![Screenshot 2024-06-25 004800](https://github.com/Suv05/React-App-Book/assets/113111710/e5eb1c04-537d-43d0-ae68-912156b959bb)
+
+### 8-Dark Theme
+![Screen Recording 2024-06-26 004849](https://github.com/Suv05/React-App-Book/assets/113111710/57f47799-68d8-432a-93b9-6c2a9eb28bff)
+
