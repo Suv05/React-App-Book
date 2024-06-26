@@ -1,0 +1,11 @@
+header {
+  position: sticky;
+  top: 0;
+  background-color: aqua;
+  z-index: 1000;
+}
+
+.container {
+  padding-top: 50px; /* Adjust as needed to avoid content overlap */
+  background-color: rgb(215, 163, 193) !important;
+}
