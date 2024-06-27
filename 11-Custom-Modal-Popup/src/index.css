@@ -1,0 +1,18 @@
+.container {
+  border: 1px solid #000000;
+  border-radius: 1rem;
+  width: 50% !important;
+  height: 40% !important;
+  z-index: -1;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+}
+h3 {
+  text-align: left;
+  text-transform: capitalize; 
+}
+.cross-btn {
+  float: right;
+  position: sticky;
+  cursor: pointer;
+  z-index: 1;
+}
