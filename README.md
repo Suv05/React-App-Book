@@ -29,6 +29,11 @@
 ### 10-Custom Tab Content
 ![Screen Recording 2024-06-27 153213](https://github.com/Suv05/React-App-Book/assets/113111710/f1475c2e-6b6b-40c1-86e9-2080b4295cf7)
 
+### 11-Custom Modal Pop-up
+https://github.com/Suv05/React-App-Book/assets/113111710/a9557c34-0a4a-411b-9667-4e87d822c4a1
+
+
+
 
 
 
