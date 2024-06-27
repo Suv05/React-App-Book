@@ -26,4 +26,15 @@
 ### 9-Custom Scroll Indicator
 ![Screen Recording 2024-06-26 130022](https://github.com/Suv05/React-App-Book/assets/113111710/f57f8f2a-a6b6-4872-92df-1f390b765c2b)
 
+### 10-Custom Tab Content
+![Screen Recording 2024-06-27 153213](https://github.com/Suv05/React-App-Book/assets/113111710/f1475c2e-6b6b-40c1-86e9-2080b4295cf7)
+
+### 11-Custom Modal Pop-up
+![Screen Recording 2024-06-27 221551](https://github.com/Suv05/React-App-Book/assets/113111710/c0d7f4c8-40be-41e1-abbf-5de8dc2c7609)
+
+
+
+
+
+
 
