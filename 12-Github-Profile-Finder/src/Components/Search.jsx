@@ -1,6 +1,6 @@
 import { TfiGithub } from "react-icons/tfi";
 import { GoSearch } from "react-icons/go";
-import {useState } from "react";
+import { useState } from "react";
 import Result from "./Result";
 
 function Search({}) {
@@ -19,12 +19,7 @@ function Search({}) {
     setError(null);
 
     try {
-      const token = "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";
-      let response = await fetch(`https://api.github.com/users/${name}`, {
-        headers: {
-          Authorization: `token ${token}`,
-        },
-      });
+      let response = await fetch(`https://api.github.com/users/${name}`);
       if (!response.ok) {
         throw new Error("Profile Can't found");
       }
