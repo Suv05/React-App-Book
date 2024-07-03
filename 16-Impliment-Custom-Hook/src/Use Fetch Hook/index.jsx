@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "./useFetch";
 
-function Index() {
+function Index1() {
   const { item, error, loading, fetchData } = useFetch("https://dummyjson.com/products");
   const [showBtn, setShowBtn] = useState(true);
 
@@ -33,4 +33,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Index1;
