@@ -1,18 +1,8 @@
-import Header from "./Components/Header";
-import Alert from "./Components/Alert";
-import Headings from "./Components/Headings";
-import Spinner from "./Components/Spinner";
-import Accordian from "./Components/Accordian";
-import Modal from "./Components/Modal";
+import Index from "./feature-flag";
 function App() {
   return (
     <>
-      <Header />
-      <Alert />
-      <Headings />
-      <Spinner />
-      <Modal />
-      <Accordian />
+      <Index />
     </>
   );
 }
