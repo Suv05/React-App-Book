@@ -11,20 +11,24 @@ function Search({}) {
   };
   return (
     <>
-      <div className="container">
+      <div className="contain">
         <nav
           className="navbar bg-body-secondary m-auto mt-3"
-          style={{ width: "60vw" }}
+          style={{
+            width: "60vw",
+            border: "2px solid #DEF9C4",
+            borderRadius: "1rem",
+          }}
         >
           <div className="container-fluid">
             <a className="navbar-brand">
-              <TiWeatherPartlySunny size={30} />
+              <TiWeatherPartlySunny size={35} />
             </a>
             <form className="d-flex" role="search" onSubmit={handelOnClick}>
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Enter Ur City Name"
+                placeholder="Enter Ur City"
                 aria-label="Search"
                 style={{ width: "20vw" }}
                 value={value}
