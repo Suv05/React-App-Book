@@ -4,10 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        orange: "#fda218"
+        orange: "#fda218",
       },
       fontFamily: {
         "noto-sans": ['"Noto Sans"', "sans-serif"],
+      },
+      backgroundImage: {
+        "hero-img":
+          "url('https://media.istockphoto.com/id/1436956975/photo/chef-pouring-special-sauce-on-pork-ribs-in-the-kitchen.webp?b=1&s=170667a&w=0&k=20&c=dqjedk3BRtemi6aGrR62j4_HQ7NVZIsGNyTHOedV4_o=')",
       },
     },
   },

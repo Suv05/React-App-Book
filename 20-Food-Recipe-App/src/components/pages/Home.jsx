@@ -1,11 +1,17 @@
-import { PiChefHatLight, PiFediverseLogoThin } from "react-icons/pi";
-import { CiSearch, CiUser, CiHeart } from "react-icons/ci";
+import {
+  PiChefHatLight,
+  PiFediverseLogoThin,
+  PiMedal,
+  PiBowlFoodThin,
+} from "react-icons/pi";
+import { CiSearch, CiUser, CiHeart, CiClock1 } from "react-icons/ci";
+import { SiTicktick } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 function Home({}) {
   return (
     <>
-      <div className="px-5 rounded-lg h-screen font-noto-sans mb-10">
+      <div className="px-5 rounded-lg font-noto-sans mb-10">
         <div className="flex justify-center items-center">
           <div className="flex mt-2 mb-3">
             <input
@@ -77,7 +83,7 @@ function Home({}) {
           </div>
           <div className="basis-1/4 bg-[#fefefe] mybox rounded-xl mx-2">
             <img
-              src="https://wallpapers.com/images/high/food-4k-q49cuqvgdryfhk7o.webp"
+              src="https://media.istockphoto.com/id/1085446276/photo/homemade-french-coq-au-vin-chicken.webp?b=1&s=170667a&w=0&k=20&c=FyuCSuYbQCZmNLvNqw8briNoaEtY7LPl4HCn5-xvV1w="
               alt="food image"
               className="rounded-xl px-1 pt-1"
             />
@@ -99,6 +105,109 @@ function Home({}) {
               We are a home to variety of recipes world-wide for you to learn.
             </p>
           </center>
+        </div>
+        <div className="mt-3 grid grid-cols-4 gap-4 px-5 pb-12">
+          <div className="bg-zinc-200 rounded-xl px-2 pt-2 mb-12">
+            <img
+              src="https://media.istockphoto.com/id/1436956975/photo/chef-pouring-special-sauce-on-pork-ribs-in-the-kitchen.webp?b=1&s=170667a&w=0&k=20&c=dqjedk3BRtemi6aGrR62j4_HQ7NVZIsGNyTHOedV4_o="
+              alt=""
+              className="rounded-xl"
+            />
+            <button
+              disabled={true}
+              className="flex bg-white text-sm rounded-xl px-3 pt-2 pb-1 my-2"
+            >
+              <SiTicktick size={18} className="text-orange me-1" />
+              Easy To follow recipes
+            </button>
+          </div>
+          <div className="bg-orange mt-12 rounded-xl mb-6">
+            <p className="text-white font-semibold text-xl px-3 pt-3">
+              "Cooking has never been this easy!"
+            </p>
+            <p className="text-white text-base px-4 mt-3 font-semibold">
+              Marsha Shetty
+            </p>
+            <p className="text-[#d6c9c9] text-xs px-4">Master Chef, 2023</p>
+          </div>
+          <div className="bg-zinc-200 rounded-xl mt-16 px-2">
+            <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
+              <PiMedal
+                size={25}
+                className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
+              />
+              <p className="text-sm font-semibold">
+                Acheivements
+                <section className="text-xs font-thin">
+                  cook two foods today
+                </section>
+              </p>
+            </div>
+            <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
+              <PiChefHatLight
+                size={25}
+                className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
+              />
+              <p className="text-sm font-semibold">
+                Live
+                <section className="text-xs font-thin">
+                  Chef Mark jhonson
+                </section>
+              </p>
+            </div>
+            <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
+              <PiBowlFoodThin
+                size={25}
+                className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
+              />
+              <p className="text-sm font-semibold">
+                Today's recipe
+                <section className="text-xs font-thin">
+                  Spoghati Chicken
+                </section>
+              </p>
+            </div>
+          </div>
+          <div className="bg-zinc-200 rounded-xl px-1 py-1">
+            <img
+              src="https://media.istockphoto.com/id/1217012868/photo/handsome-young-african-chef-standing-in-professional-kitchen-in-restaurant-preparing-a-meal.webp?b=1&s=170667a&w=0&k=20&c=pcVtkj_n-iKi8xbb5NylgStFk4zN2EF9pYmvZKd-Kno="
+              alt="chef"
+              className="rounded-md"
+            />
+            <section
+              style={{ float: "right" }}
+              className="text-red-600 px-2 py-2 mt-1 text-sm font-medium"
+            >
+              Live
+            </section>
+            <p className="bg-white text-lg font-semibold px-2 mt-2 mb-2 py-2 rounded-xl">
+              Cook with Master Chefs
+            </p>
+          </div>
+        </div>
+        <div className="myfoodImg  rounded-lg">
+          <div>
+            <h1 className="px-12 text-3xl font-extrabold pt-12">
+              Mediterranea <span className="text-orange">Grilled</span>{" "}
+              <span className="text-zinc-200">Chiken</span>
+            </h1>
+            <p className="text-small font-medium mt-4 px-12 pb-10 ">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus pariatur repudiandae quae? Repellendus maiores error
+              accusantium facilis aliquid. Itaque cumque accusamus
+              necessitatibus.
+            </p>
+            <div className="flex flex-1 px-12 pb-14 text-white">
+              <p className="flex me-8">
+                <CiClock1 size={25} className="text-bold text-orange" />
+                <span>45 minutes</span>
+              </p>
+              <p className="flex">
+                <PiChefHatLight size={25} className="text-bold text-orange" />
+                <span>Chef Erik parker</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>
