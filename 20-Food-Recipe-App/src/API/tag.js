@@ -1,4 +1,4 @@
-const url = "https://tasty.p.rapidapi.com/recipes/list";
+const url = "https://tasty.p.rapidapi.com/tags/list";
 const options = {
   method: "GET",
   headers: {
@@ -7,7 +7,7 @@ const options = {
   },
 };
 
-const fetchApi = async () => {
+export const fetchTagApi = async () => {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
@@ -16,4 +16,3 @@ const fetchApi = async () => {
     console.error(error);
   }
 };
-fetchApi();
