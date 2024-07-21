@@ -41,14 +41,14 @@ function Header() {
             RECIPES
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/cocktail"
             className={({ isActive }) =>
               isActive
                 ? "font-semibold text-sm touch-pan-up underline decoration-orange"
                 : "font-normal text-xs hover:text-sm hover:font-medium"
             }
           >
-            CONTACT
+            COCKTAIL
           </NavLink>
         </nav>
 
