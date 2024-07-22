@@ -189,7 +189,7 @@ function Home({}) {
           <div>
             <h1 className="px-12 text-3xl font-extrabold pt-12">
               Mediterranea <span className="text-orange">Grilled</span>{" "}
-              <span className="text-zinc-200">Chiken</span>
+              <span className="text-zinc-200">Chicken</span>
             </h1>
             <p className="text-small font-medium mt-4 px-12 pb-10 ">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
