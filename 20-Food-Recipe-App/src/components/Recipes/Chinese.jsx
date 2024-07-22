@@ -1,5 +1,3 @@
-import { fetchListApi } from "../../API/list";
-import { useLoaderData } from "react-router-dom";
 import { PiChefHatLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
@@ -13,8 +11,8 @@ import { Link } from "react-router-dom";
 //   }
 // }
 
-function Recipes() {
-  //const item  = useLoaderData(); // Destructure item correctly
+function Chinese() {
+  //const item  = useLoaderData();
   const item = [
     {
       id: "1",
@@ -139,10 +137,6 @@ function Recipes() {
   ];
   return (
     <>
-      <center className="font-noto-sans text-2xl font-bold mt-2 mb-8">
-        What to{" "}
-        <span className="text-orange underline underline-orange">Cook</span> ?
-      </center>
       <div className="grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 gap-4 px-5 mb-12">
         {/* Render the recipes here */}
         {item &&
@@ -172,4 +166,4 @@ function Recipes() {
   );
 }
 
-export default Recipes;
+export default Chinese;
