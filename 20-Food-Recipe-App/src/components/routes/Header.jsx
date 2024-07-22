@@ -1,13 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { GrFavorite } from "react-icons/gr";
 
 function Header() {
   return (
     <div className="sticky top-0 bg-white z-50">
       <div className="flex items-center justify-between px-5 py-5">
-        <h1 className="font-noto-sans font-bold text-xl">
-          FLA<span className="text-orange">VORIZ</span>
-        </h1>
+        <Link
+          to="/"
+          className="hover:scale-110 active:scale-75"
+        >
+          <h1 className="font-noto-sans font-bold text-xl">
+            FLA<span className="text-orange">VORIZ</span>
+          </h1>
+        </Link>
 
         <nav className="flex-1 text-center font-noto-sans">
           <NavLink

@@ -11,22 +11,7 @@ import { Link } from "react-router-dom";
 function Home({}) {
   return (
     <>
-      <div className="px-5 rounded-lg font-noto-sans mb-10">
-        <div className="flex justify-center items-center">
-          <div className="flex mt-2 mb-3">
-            <input
-              type="text"
-              placeholder="Search recipes"
-              className="w-96 rounded-2xl focus:outline-none focus:ring-0 bg-[#f5f5f5] py-1 px-2 me-2"
-            />
-            <span className="rounded-full bg-neutral-100 py-2 px-2">
-              <button>
-                <CiSearch size={20} />
-              </button>
-            </span>
-          </div>
-        </div>
-
+      <div className="px-5 rounded-lg font-noto-sans mb-8">
         <div className="myImg rounded-lg font-noto-sans px-10 pt-12 grid grid-cols-2 mb-6">
           <div className="mb-8">
             <h1 className="text-5xl font-bold">
@@ -37,12 +22,14 @@ function Home({}) {
               vero dignissimos ipsam eius quia praesentium tempore.
             </p>
             <div className="px-2">
-              <button className="bg-zinc-900 text-white py-2 px-6 flex rounded-lg">
-                Explore Recipes
-                <span>
-                  <PiChefHatLight size={22} className="ml-2 mt-0.5" />
-                </span>
-              </button>
+              <Link to="/recipes">
+                <button className="bg-zinc-900 text-white py-2 px-6 flex rounded-lg hover:bg-zinc-800 transition-transform transform hover:scale-105 active:translate-y-1 hover:rounded-md">
+                  Explore Recipes
+                  <span>
+                    <PiChefHatLight size={22} className="ml-2 mt-0.5" />
+                  </span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

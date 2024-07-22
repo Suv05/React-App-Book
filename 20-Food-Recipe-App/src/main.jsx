@@ -18,6 +18,9 @@ import Chinese from "./components/Recipes/Chinese";
 import Vegan from "./components/Recipes/Vegan";
 import TryItOut from "./components/Recipes/TryItOut";
 import RecipeDetails from "./components/Details/RecipeDetails";
+import VeganDetails from "./components/Details/VeganDetails";
+import MexicanDetails from "./components/Details/MexicanDetails";
+import CocktailDetails from "./components/Details/CocktailDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +36,9 @@ const router = createBrowserRouter(
         <Route path="tryitout" element={<TryItOut />} />
       </Route>
       <Route path="recipes/:id" element={<RecipeDetails />} />
+      <Route path="recipes/mexican/:id" element={<MexicanDetails />} />
+      <Route path="recipes/cocktail/:id" element={<CocktailDetails />} />
+      <Route path="recipes/vegan/:id" element={<VeganDetails />} />
     </Route>
   )
 );
