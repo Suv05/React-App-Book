@@ -123,36 +123,36 @@ function Home({}) {
                 size={25}
                 className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
               />
-              <p className="text-sm font-semibold">
+              <section className="text-sm font-semibold">
                 Acheivements
-                <section className="text-xs font-thin">
+                <p className="text-xs font-thin">
                   cook two foods today
-                </section>
-              </p>
+                </p>
+              </section>
             </div>
             <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
               <PiChefHatLight
                 size={25}
                 className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
               />
-              <p className="text-sm font-semibold">
+              <section className="text-sm font-semibold">
                 Live
-                <section className="text-xs font-thin">
+                <p className="text-xs font-thin">
                   Chef Mark jhonson
-                </section>
-              </p>
+                </p>
+              </section>
             </div>
             <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
               <PiBowlFoodThin
                 size={25}
                 className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
               />
-              <p className="text-sm font-semibold">
+              <section className="text-sm font-semibold">
                 Today's recipe
-                <section className="text-xs font-thin">
+                <p className="text-xs font-thin">
                   Spoghati Chicken
-                </section>
-              </p>
+                </p>
+              </section>
             </div>
           </div>
           <div className="bg-zinc-200 rounded-xl px-1 py-1">
