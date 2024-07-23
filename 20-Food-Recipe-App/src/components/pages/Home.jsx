@@ -4,7 +4,7 @@ import {
   PiMedal,
   PiBowlFoodThin,
 } from "react-icons/pi";
-import { CiSearch, CiUser, CiHeart, CiClock1 } from "react-icons/ci";
+import {CiUser, CiHeart, CiClock1 } from "react-icons/ci";
 import { SiTicktick } from "react-icons/si";
 import { Link } from "react-router-dom";
 
