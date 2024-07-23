@@ -115,26 +115,27 @@ function MexicanDetails({}) {
           </div>
         </div>
         {/* ingredients box */}
-        <div className="font-noto-sans mb-3">
-          <h1 className="px-3 pt-5 text-2xl font-bold mb-3">
-            INGRE<span className="text-orange underline">DIENTS</span>
+        <div className="font-noto-sans mb-6 px-4">
+          <h1 className="text-3xl font-bold mb-6">
+            INGRE<span className="text-orange-500 underline">DIENTS</span>
           </h1>
-          <div className="mt-4 grid grid-cols-2 gap-4 pb-5 itembox">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {item.ingredients.map((i, index) => (
               <div
                 key={index}
-                className="py-2 px-3 rounded-lg capitalize text-lg font-semibold flex items-center space-x-2"
+                className="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-md transition-transform transform hover:scale-105"
               >
                 <input
                   type="checkbox"
                   name="tick"
-                  className="custom-checkbox"
-                />{" "}
-               <span> {i}</span>
+                  className="form-checkbox h-5 w-5 text-orange-500 rounded focus:ring-2 focus:ring-orange-500"
+                />
+                <span className="text-lg font-medium capitalize">{i}</span>
               </div>
             ))}
           </div>
         </div>
+
         {/* instructions */}
         <div className="font-noto-sans">
           <h1 className="px-3 pt-5 text-2xl font-bold mb-5">

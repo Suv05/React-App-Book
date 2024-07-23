@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { IoIosArrowRoundBack, IoIosMan } from "react-icons/io";
 import { SiLevelsdotfyi } from "react-icons/si";
 import { BsClockFill } from "react-icons/bs";
+import { PiChefHatLight } from "react-icons/pi";
+import { CiClock1 } from "react-icons/ci";
 
 function CocktailDetails({}) {
   const item = {
@@ -57,10 +59,35 @@ function CocktailDetails({}) {
 
   return (
     <>
-      <center className="font-noto-sans text-2xl font-bold mt-2 mb-8">
-        What to{" "}
-        <span className="text-orange underline underline-orange">Cook</span> ?
-      </center>
+      <div className="px-5">
+        <div className="myrecipeImg rounded-xl mb-4 text-right">
+          <div>
+            <h1 className="px-12 text-3xl font-extrabold pt-12">
+              Mediterranea <span className="text-orange">Grilled</span>{" "}
+              <span className="text-zinc-100">Chicken</span>
+            </h1>
+            <p className="text-small font-medium mt-4 px-12 pb-10 text-zinc-600">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus pariatur repudiandae quae🤤Repellendus maiores error
+              accusantium facilis aliquid. Itaque cumque accusamus
+              necessitatibus.
+            </p>
+            <div className="flex justify-end px-12 pb-14 text-zinc-400">
+              <p className="flex me-8 items-center">
+                <CiClock1 size={25} className="text-bold text-orange me-2" />
+                <span>45 minutes</span>
+              </p>
+              <p className="flex items-center">
+                <PiChefHatLight
+                  size={25}
+                  className="text-bold text-orange me-2"
+                />
+                <span>Chef Erik Parker</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       <Link
         className="flex items-center px-5 mb-3 font-noto-sans"
         to=".."
@@ -115,22 +142,22 @@ function CocktailDetails({}) {
           </div>
         </div>
         {/* ingredients box */}
-        <div className="font-noto-sans mb-3">
-          <h1 className="px-3 pt-5 text-2xl font-bold mb-3">
+        <div className="font-noto-sans mb-6 px-4">
+          <h1 className="text-2xl font-bold mb-6">
             INGRE<span className="text-orange underline">DIENTS</span>
           </h1>
-          <div className="mt-4 grid grid-cols-2 gap-4 pb-5 itembox">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {item.ingredients.map((i, index) => (
               <div
                 key={index}
-                className="py-2 px-3 rounded-lg capitalize text-lg font-semibold flex items-center space-x-2"
+                className="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-md transition-transform transform hover:scale-105"
               >
                 <input
                   type="checkbox"
                   name="tick"
-                  className="custom-checkbox"
-                />{" "}
-               <span> {i}</span>
+                  className="form-checkbox h-5 w-5 text-orange-500 rounded focus:ring-2 focus:ring-orange-500"
+                />
+                <span className="text-lg font-medium capitalize">{i}</span>
               </div>
             ))}
           </div>
