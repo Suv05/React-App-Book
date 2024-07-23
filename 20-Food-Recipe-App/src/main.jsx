@@ -16,12 +16,14 @@ import Mexican from "./components/Recipes/Mexican";
 import Cocktail from "./components/Recipes/Cocktail";
 import Chinese from "./components/Recipes/Chinese";
 import Vegan from "./components/Recipes/Vegan";
-import TryItOut from "./components/Recipes/TryItOut";
+import TryItOut, { loader } from "./components/tryitout/TryItOut";
 import RecipeDetails from "./components/Details/RecipeDetails";
 import VeganDetails from "./components/Details/VeganDetails";
 import MexicanDetails from "./components/Details/MexicanDetails";
 import CocktailDetails from "./components/Details/CocktailDetails";
+import TryitoutDetails from "./components/tryitout/TryitoutDetails";
 
+// Main.jsx
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -33,15 +35,17 @@ const router = createBrowserRouter(
         <Route path="mexican" element={<Mexican />} />
         <Route path="cocktail" element={<Cocktail />} />
         <Route path="vegan" element={<Vegan />} />
-        <Route path="tryitout" element={<TryItOut />} />
+        <Route path="tryitout" element={<TryItOut />} loader={loader} />
       </Route>
       <Route path="recipes/:id" element={<RecipeDetails />} />
       <Route path="recipes/mexican/:id" element={<MexicanDetails />} />
       <Route path="recipes/cocktail/:id" element={<CocktailDetails />} />
       <Route path="recipes/vegan/:id" element={<VeganDetails />} />
+      <Route path="recipes/tryitout/:id" element={<TryitoutDetails />} />
     </Route>
   )
 );
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
