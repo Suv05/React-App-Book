@@ -24,7 +24,23 @@ body {
 }
 
 .myfoodImg {
-  background-image: url("https://media.istockphoto.com/id/835903320/photo/baked-chicken-wings-with-sesame-seeds-and-sweet-chili-sauce-on-white-wooden-board.webp?b=1&s=170667a&w=0&k=20&c=7dXJKCGrJLvgl7cso90N6QKQOumIr00J2aLNzR_zCM4=");
+  background-image:url("./assets/top-view-delicious-meat-table.jpg");
+  background-size: cover; /* Make sure the image covers the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  /*height: 100vh; Ensure the div has height */
+  width: 100%; /* Ensure the div spans the full width */
+}
+.myDetailsImg {
+  background-image:url("./assets/details.jpg");
+  background-size: cover; /* Make sure the image covers the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  /*height: 100vh; Ensure the div has height */
+  width: 100%; /* Ensure the div spans the full width */
+}
+.myrecipeImg {
+  background-image:url("./assets/mexican-dishes-pepper.jpg");
   background-size: cover; /* Make sure the image covers the entire area */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
