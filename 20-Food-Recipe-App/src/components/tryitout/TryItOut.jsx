@@ -1,48 +1,42 @@
 import { CiSearch } from "react-icons/ci";
 import { PiChefHatLight } from "react-icons/pi";
-import {
-  NavLink,
-  Link,
-  useSearchParams,
-  useLoaderData,
-  json,
-} from "react-router-dom";
+import { useState, Suspense } from "react";
+import { Link, useLoaderData, json, defer, Await } from "react-router-dom";
 import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
+import Spinner from "../pages/Spinner";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
   const getTag = url.searchParams.get("tags");
-  console.log("Tag:", getTag);
-
   if (!getTag) {
-    return json([]);
+    return defer({ data: Promise.resolve([]) });
   }
-
   try {
-    const data = await fetchApi(
+    const data = fetchApi(
       `https://low-carb-recipes.p.rapidapi.com/search?tags=${getTag}`
     );
-    return json(data);
+    return defer({ data });
   } catch (e) {
     console.error("Failed to fetch data", e.message);
-    return json([], { status: 500, statusText: "Failed to fetch data" });
+    return defer({
+      data: Promise.reject(
+        new Response("Failed to fetch data", { status: 500 })
+      ),
+    });
   }
 }
 
 function TryItOut() {
+  const [active, setActive] = useState("");
   const keyWords = [
     // Add other keywords as needed
     "appetizer",
     "beef-free",
     "beverages",
     "breakfast",
-    "chicken-free",
-    "dairy-free",
     "desserts",
-    "egg-free",
     "eggs",
     "fish",
-    "fish-free",
     "freezer-friendly",
     "french",
     "gluten-free",
@@ -70,30 +64,25 @@ function TryItOut() {
     "relevant-meal--lunch",
     "relevant-meal--main-dishes",
     "relevant-meal--salads",
-    "relevant-meal--sides",
+    "relevant-meal--",
     "relevant-meal--snacks",
     "salads",
     "sheet-pan-dinners",
     "shellfish",
-    "shellfish-free",
-    "sides",
     "skillet",
     "snacks",
     "soy-free",
-    "sulphites",
     "tree-nut-free",
     "vegan",
     "vegetarian",
     "wheat-free",
   ];
 
-  const [searchParam, setSearchParam] = useSearchParams();
-  const data = useLoaderData();
-  const getType = searchParam.get("tags");
+  const { data } = useLoaderData();
 
-  console.log("Fetched Data:", data);
-  console.log("Current Tag:", getType);
-
+  const handelOnClick = (keyWord) => {
+    setActive(keyWord);
+  };
   return (
     <>
       <div className="flex justify-center items-center mb-4">
@@ -111,60 +100,71 @@ function TryItOut() {
         </div>
       </div>
       {/* keywords for recipe search */}
+
       <div className="flex flex-wrap justify-center items-center gap-4 font-noto-sans px-5 mb-8">
         {keyWords.map((i) => (
-          <NavLink to={`?tags=${i}`} key={i}>
-            <button
-              className="px-4 py-2 rounded-full border-2 border-orange whitespace-nowrap hover:bg-orange hover:text-white transition duration-200"
-              onClick={() => setSearchParam({ tags: i })}
+          <Link to={`?tags=${i}`} key={i} onClick={() => handelOnClick(i)}>
+            <p
+              className={`px-4 py-2 rounded-full border-2 border-orange whitespace-nowrap ${
+                active === i
+                  ? "bg-orange text-white"
+                  : "hover:bg-orange hover:text-white transition duration-200"
+              } `}
             >
+              {" "}
               {i}
-            </button>
-          </NavLink>
+            </p>
+          </Link>
         ))}
       </div>
       {/* Display the fetched data */}
-      <div className="grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 gap-4 px-5 mb-12">
-        {Array.isArray(data) ? (
-          data.length > 0 ? (
-            data.map((i, index) => (
-              <div
-                key={i.id}
-                className="bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
-              >
-                <div>
-                  <img src={i.image} className="m-auto rounded-2xl mb-1 mt-2" />
-                  <h1 className="text-lg font-bold mb-1">{i.name}</h1>
-                </div>
-                <div className="bg-zinc-950 rounded-3xl text-white mb-3 mt-auto">
-                  <Link to={`${i.id}`}>
-                    <button className="pl-2 pb-0.5 flex justify-between w-full items-center hover:bg-zinc-800 transition-transform transform hover:scale-105 active:translate-y-1 hover:rounded-md">
-                      <span className="text-lg font-extralight">
-                        See Recipe
-                      </span>
-                      <span className="rounded-full px-1 py-1 bg-white text-black mr-2 mb-0.5 mt-1">
-                        <PiChefHatLight size={20} />
-                      </span>
-                    </button>
-                  </Link>
-                </div>
+      <Suspense fallback={<Spinner />}>
+        <Await resolve={data}>
+          {(item) => {
+            return (
+              <div className="grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 gap-4 px-5 mb-12">
+                {Array.isArray(item) ? (
+                  item.length > 0 ? (
+                    item.map((i) => (
+                      <div
+                        key={i.id}
+                        className="bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
+                      >
+                        <div>
+                          <img
+                            src={i.image}
+                            className="m-auto rounded-2xl mb-1 mt-2"
+                          />
+                          <h1 className="text-lg font-bold mb-1">{i.name}</h1>
+                        </div>
+                        <div className="bg-zinc-950 rounded-3xl text-white mb-3 mt-auto">
+                          <Link to={`${i.id}`}>
+                            <button className="pl-2 pb-0.5 flex justify-between w-full items-center hover:bg-zinc-800 transition-transform transform hover:scale-105 active:translate-y-1 hover:rounded-md">
+                              <span className="text-lg font-extralight">
+                                See Recipe
+                              </span>
+                              <span className="rounded-full px-1 py-1 bg-white text-black mr-2 mb-0.5 mt-1">
+                                <PiChefHatLight size={20} />
+                              </span>
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    ))
+                  ) : null
+                ) : (
+                  <div className="flex justify-center items-center w-full">
+                    <p className="text-2xl font-bold my-7">
+                      Error fetching{" "}
+                      <span className="text-orange">recipes</span>
+                    </p>
+                  </div>
+                )}
               </div>
-            ))
-          ) : (
-            <div className="flex justify-center items-center w-full">
-              <p className="text-2xl font-bold my-7">
-                😔No <span className="text-orange">recipes</span> found
-              </p>
-            </div>
-          )
-        ) : (
-          <div className="flex justify-center items-center w-full">
-            <p className="text-2xl font-bold my-7">
-              Error fetching <span className="text-orange">recipes</span>
-            </p>
-          </div>
-        )}
-      </div>
+            );
+          }}
+        </Await>
+      </Suspense>
     </>
   );
 }

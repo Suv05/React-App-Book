@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Link, json, useLoaderData, Await, defer } from "react-router-dom";
+import { Link,useLoaderData, Await, defer } from "react-router-dom";
 import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
 import { IoIosArrowRoundBack, IoIosMan } from "react-icons/io";
 import { RiBowlLine } from "react-icons/ri";
