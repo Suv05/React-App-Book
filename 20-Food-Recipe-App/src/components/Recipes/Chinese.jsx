@@ -7,7 +7,6 @@ import Spinner from "../pages/Spinner";
 export async function loader() {
   try {
     const data = fetchChinese("https://chinese-food-db.p.rapidapi.com/");
-    console.log(data);
     return defer({ data }); // Ensure correct structure
   } catch (error) {
     console.error(error);
@@ -19,12 +18,10 @@ export async function loader() {
 
 function Chinese() {
   const { data } = useLoaderData();
-  console.log("lodaer data:", data);
   return (
     <Suspense fallback={<Spinner />}>
       <Await resolve={data}>
         {(item) => {
-          console.log("fetched item:", item);
           return (
             <div className="grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 gap-4 px-5 mb-12">
               {/* Render the recipes here */}

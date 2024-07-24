@@ -13,17 +13,27 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Recipes from "./components/pages/Recipes";
-import Mexican from "./components/Recipes/Mexican";
-import Cocktail from "./components/Recipes/Cocktail";
+import Mexican, { loader as mexicanLoader } from "./components/Recipes/Mexican";
+import Cocktail, {
+  loader as cocktailLoader,
+} from "./components/Recipes/Cocktail";
 import Chinese, { loader as chineseLoader } from "./components/Recipes/Chinese";
-import Vegan from "./components/Recipes/Vegan";
+import Vegan, { loader as veganLoader } from "./components/Recipes/Vegan";
 import TryItOut, {
   loader as tryItOutLoader,
 } from "./components/tryitout/TryItOut";
-import RecipeDetails from "./components/Details/RecipeDetails";
-import VeganDetails from "./components/Details/VeganDetails";
-import MexicanDetails from "./components/Details/MexicanDetails";
-import CocktailDetails from "./components/Details/CocktailDetails";
+import RecipeDetails, {
+  loader as recipesDetailsLoader,
+} from "./components/Details/RecipeDetails";
+import VeganDetails, {
+  loader as VeganDetailsLoader,
+} from "./components/Details/VeganDetails";
+import MexicanDetails, {
+  loader as MexicanDetailsLoader,
+} from "./components/Details/MexicanDetails";
+import CocktailDetails, {
+  loader as CocktailDetailsLoader,
+} from "./components/Details/CocktailDetails";
 import TryitoutDetails, {
   loader as tryitoutDetailsLoader,
 } from "./components/tryitout/TryitoutDetails";
@@ -45,9 +55,33 @@ const router = createBrowserRouter(
           }
           loader={chineseLoader}
         />
-        <Route path="mexican" element={<Mexican />} />
-        <Route path="cocktail" element={<Cocktail />} />
-        <Route path="vegan" element={<Vegan />} />
+        <Route
+          path="mexican"
+          element={
+            <Suspense fallback={<Spinner />}>
+              <Mexican />
+            </Suspense>
+          }
+          loader={mexicanLoader}
+        />
+        <Route
+          path="cocktail"
+          element={
+            <Suspense fallback={<Spinner />}>
+              <Cocktail />
+            </Suspense>
+          }
+          loader={cocktailLoader}
+        />
+        <Route
+          path="vegan"
+          element={
+            <Suspense fallback={<Spinner />}>
+              <Vegan />
+            </Suspense>
+          }
+          loader={veganLoader}
+        />
         <Route
           path="tryitout"
           element={
@@ -58,10 +92,42 @@ const router = createBrowserRouter(
           loader={tryItOutLoader}
         />
       </Route>
-      <Route path="recipes/:id" element={<RecipeDetails />} />
-      <Route path="recipes/mexican/:id" element={<MexicanDetails />} />
-      <Route path="recipes/cocktail/:id" element={<CocktailDetails />} />
-      <Route path="recipes/vegan/:id" element={<VeganDetails />} />
+      <Route
+        path="recipes/:id"
+        element={
+          <Suspense fallback={Spinner}>
+            <RecipeDetails />
+          </Suspense>
+        }
+        loader={recipesDetailsLoader}
+      />
+      <Route
+        path="recipes/mexican/:id"
+        element={
+          <Suspense fallback={<Spinner />}>
+            <MexicanDetails />
+          </Suspense>
+        }
+        loader={MexicanDetailsLoader}
+      />
+      <Route
+        path="recipes/cocktail/:id"
+        element={
+          <Suspense fallback={<Spinner />}>
+            <CocktailDetails />
+          </Suspense>
+        }
+        loader={CocktailDetailsLoader}
+      />
+      <Route
+        path="recipes/vegan/:id"
+        element={
+          <Suspense fallback={<Spinner />}>
+            <VeganDetails />
+          </Suspense>
+        }
+        loader={VeganDetailsLoader}
+      />
       <Route
         path="recipes/tryitout/:id"
         element={
