@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import "./index.css";
+import Spinner from "./components/pages/Spinner";
 import App from "./components/routes/App";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
@@ -16,12 +17,16 @@ import Mexican from "./components/Recipes/Mexican";
 import Cocktail from "./components/Recipes/Cocktail";
 import Chinese from "./components/Recipes/Chinese";
 import Vegan from "./components/Recipes/Vegan";
-import TryItOut, { loader } from "./components/tryitout/TryItOut";
+import TryItOut, {
+  loader as tryItOutLoader,
+} from "./components/tryitout/TryItOut";
 import RecipeDetails from "./components/Details/RecipeDetails";
 import VeganDetails from "./components/Details/VeganDetails";
 import MexicanDetails from "./components/Details/MexicanDetails";
 import CocktailDetails from "./components/Details/CocktailDetails";
-import TryitoutDetails from "./components/tryitout/TryitoutDetails";
+import TryitoutDetails, {
+  loader as tryitoutDetailsLoader,
+} from "./components/tryitout/TryitoutDetails";
 
 // Main.jsx
 const router = createBrowserRouter(
@@ -35,13 +40,21 @@ const router = createBrowserRouter(
         <Route path="mexican" element={<Mexican />} />
         <Route path="cocktail" element={<Cocktail />} />
         <Route path="vegan" element={<Vegan />} />
-        <Route path="tryitout" element={<TryItOut />} loader={loader} />
+        <Route path="tryitout" element={<TryItOut />} loader={tryItOutLoader} />
       </Route>
       <Route path="recipes/:id" element={<RecipeDetails />} />
       <Route path="recipes/mexican/:id" element={<MexicanDetails />} />
       <Route path="recipes/cocktail/:id" element={<CocktailDetails />} />
       <Route path="recipes/vegan/:id" element={<VeganDetails />} />
-      <Route path="recipes/tryitout/:id" element={<TryitoutDetails />} />
+      <Route
+        path="recipes/tryitout/:id"
+        element={
+          <Suspense fallback={<Spinner />}>
+            <TryitoutDetails />
+          </Suspense>
+        }
+        loader={tryitoutDetailsLoader}
+      />
     </Route>
   )
 );
