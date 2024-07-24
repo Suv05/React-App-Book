@@ -15,7 +15,7 @@ import Contact from "./components/pages/Contact";
 import Recipes from "./components/pages/Recipes";
 import Mexican from "./components/Recipes/Mexican";
 import Cocktail from "./components/Recipes/Cocktail";
-import Chinese from "./components/Recipes/Chinese";
+import Chinese, { loader as chineseLoader } from "./components/Recipes/Chinese";
 import Vegan from "./components/Recipes/Vegan";
 import TryItOut, {
   loader as tryItOutLoader,
@@ -36,11 +36,27 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="recipes" element={<Recipes />}>
-        <Route index element={<Chinese />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<Spinner />}>
+              <Chinese />
+            </Suspense>
+          }
+          loader={chineseLoader}
+        />
         <Route path="mexican" element={<Mexican />} />
         <Route path="cocktail" element={<Cocktail />} />
         <Route path="vegan" element={<Vegan />} />
-        <Route path="tryitout" element={<TryItOut />} loader={tryItOutLoader} />
+        <Route
+          path="tryitout"
+          element={
+            <Suspense fallback={<Spinner />}>
+              <TryItOut />
+            </Suspense>
+          }
+          loader={tryItOutLoader}
+        />
       </Route>
       <Route path="recipes/:id" element={<RecipeDetails />} />
       <Route path="recipes/mexican/:id" element={<MexicanDetails />} />
