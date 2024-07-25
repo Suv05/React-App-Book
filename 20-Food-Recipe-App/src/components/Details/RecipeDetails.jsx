@@ -5,6 +5,8 @@ import { BsClockFill } from "react-icons/bs";
 import { fetchChinese } from "../../API/ChineseDB/getChinese";
 import { Suspense } from "react";
 import Spinner from "../pages/Spinner";
+import { PiChefHatLight } from "react-icons/pi";
+import { CiClock1 } from "react-icons/ci";
 
 export async function loader({ params }) {
   const { id } = params;

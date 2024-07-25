@@ -6,7 +6,9 @@ import Spinner from "../pages/Spinner";
 
 export async function loader() {
   try {
-    const data = fetchVegan("https://the-vegan-recipes-db.p.rapidapi.com/");
+    const data =fetchVegan(
+      "https://the-vegan-recipes-db.p.rapidapi.com/"
+    );
     return defer({ data });
   } catch (err) {
     console.error(err.message);

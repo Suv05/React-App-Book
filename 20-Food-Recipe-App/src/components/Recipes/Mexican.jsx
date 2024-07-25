@@ -6,14 +6,18 @@ import Spinner from "../pages/Spinner";
 
 export async function loader() {
   try {
-    const data = fetchMexican("https://the-mexican-food-db.p.rapidapi.com/");
+    const data = fetchMexican(
+      "https://the-mexican-food-db.p.rapidapi.com/"
+    );
     return defer({ data });
   } catch (err) {
     console.error(err.message);
     return defer({
-      data: Promise.reject(new Response("Not get the data from Api"), {
-        status: 500,
-      }),
+      data: Promise.reject(
+        new Response("Failed to fetch data from API", {
+          status: 500,
+        })
+      ),
     });
   }
 }

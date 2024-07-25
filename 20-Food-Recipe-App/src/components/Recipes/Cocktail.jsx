@@ -6,7 +6,9 @@ import Spinner from "../pages/Spinner";
 
 export async function loader() {
   try {
-    const data = fetchCocktail("https://the-cocktail-db3.p.rapidapi.com/");
+    const data =  fetchCocktail(
+      "https://the-cocktail-db3.p.rapidapi.com/"
+    );
     return defer({ data });
   } catch (err) {
     console.error(err.message);
