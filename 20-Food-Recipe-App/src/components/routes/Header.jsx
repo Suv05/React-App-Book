@@ -5,10 +5,7 @@ function Header() {
   return (
     <div className="sticky top-0 bg-white z-50">
       <div className="flex items-center justify-between px-5 py-5">
-        <Link
-          to="/"
-          className="hover:scale-110 active:scale-75"
-        >
+        <Link to="/" className="hover:scale-110 active:scale-75">
           <h1 className="font-noto-sans font-bold text-xl">
             FLA<span className="text-orange">VORIZ</span>
           </h1>
@@ -57,9 +54,18 @@ function Header() {
           </NavLink>
         </nav>
 
-        <div className="ml-auto">
-          <GrFavorite size={27} />
-        </div>
+        <NavLink
+          to="/fav"
+          className={({ isActive }) =>
+            isActive
+              ? "text-orange"
+              : "hover:scale-105 active:scale-75"
+          }
+        >
+          <div className="ml-auto">
+            <GrFavorite size={27}/>
+          </div>
+        </NavLink>
       </div>
     </div>
   );

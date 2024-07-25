@@ -37,7 +37,7 @@ import CocktailDetails, {
 import TryitoutDetails, {
   loader as tryitoutDetailsLoader,
 } from "./components/tryitout/TryitoutDetails";
-
+import Favorite from "./components/pages/Favorite";
 // Main.jsx
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +45,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="fav" element={<Favorite />} />
       <Route path="recipes" element={<Recipes />}>
         <Route
           index
