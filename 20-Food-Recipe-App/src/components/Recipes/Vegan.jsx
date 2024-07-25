@@ -2,13 +2,19 @@ import { Suspense } from "react";
 import { Link, Await, defer, useLoaderData } from "react-router-dom";
 import { fetchVegan } from "../../API/VeganDB/getVegan";
 import { PiChefHatLight } from "react-icons/pi";
+import { GrFavorite } from "react-icons/gr";
 import Spinner from "../pages/Spinner";
 
 export async function loader() {
   try {
-    const data =fetchVegan(
+    const cachedData = localStorage.getItem("veganData");
+    if (cachedData) {
+      return defer({ data: JSON.parse(cachedData) });
+    }
+    const data = await fetchVegan(
       "https://the-vegan-recipes-db.p.rapidapi.com/"
     );
+    localStorage.setItem("veganData", JSON.stringify(data));
     return defer({ data });
   } catch (err) {
     console.error(err.message);
@@ -29,18 +35,23 @@ function Vegan({}) {
           return (
             <>
               <div className="grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 gap-4 px-5 mb-12">
-                {/* Render the recipes here */}
                 {item &&
                   item.map((i) => (
                     <div
                       key={i.id}
-                      className="bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
+                      className="relative bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
                     >
-                      <div>
+                      <div className="relative">
                         <img
                           src={i.image}
                           className="m-auto rounded-2xl mb-1 mt-2"
+                          alt={i.title}
                         />
+                        <button className="absolute top-3 right-3 text-red-600 hover:text-orange transition-colors">
+                          <GrFavorite size={30} />
+                        </button>
+                      </div>
+                      <div>
                         <h1 className="text-lg font-bold mb-1">{i.title}</h1>
                       </div>
                       <div className="bg-zinc-950 rounded-3xl text-white mb-3 mt-auto">

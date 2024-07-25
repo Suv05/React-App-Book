@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { Link, useLoaderData, json, defer, Await } from "react-router-dom";
 import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
 import Spinner from "../pages/Spinner";
+import { GrFavorite } from "react-icons/gr";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
@@ -128,13 +129,18 @@ function TryItOut() {
                     item.map((i) => (
                       <div
                         key={i.id}
-                        className="bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
+                        className="relative bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
                       >
-                        <div>
+                        <div className="relative">
                           <img
                             src={i.image}
                             className="m-auto rounded-2xl mb-1 mt-2"
                           />
+                          <button className="absolute top-3 right-3 text-red-600 hover:text-orange transition-colors">
+                            <GrFavorite size={30} />
+                          </button>
+                        </div>
+                        <div>
                           <h1 className="text-lg font-bold mb-1">{i.name}</h1>
                         </div>
                         <div className="bg-zinc-950 rounded-3xl text-white mb-3 mt-auto">
