@@ -38,10 +38,12 @@ import TryitoutDetails, {
   loader as tryitoutDetailsLoader,
 } from "./components/tryitout/TryitoutDetails";
 import Favorite from "./components/pages/Favorite";
+import Broken from "./components/pages/Broken";
+
 // Main.jsx
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={<App />} errorElement={<Broken />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
