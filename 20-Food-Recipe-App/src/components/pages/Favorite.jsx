@@ -1,25 +1,26 @@
-import { GrFavorite } from 'react-icons/gr';
+import { GrFavorite } from "react-icons/gr";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Favorite = () => {
-  const favoriteRecipes = [
-    {
-      id: 1,
-      title: "Mediterranean Grilled Chicken",
-      description:
-        "A delicious and healthy grilled chicken recipe with Mediterranean flavors.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 2,
-      title: "Spicy Tuna Sushi Roll",
-      description: "A popular sushi roll with spicy tuna and creamy avocado.",
-      image: "https://via.placeholder.com/150",
-    },
-    // Add more favorite recipes here
-  ];
+  const favoriteRecipes = useSelector((state) => state.favorite);
+  const location = useLocation();
+  console.log("favorite:", location);
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4 font-noto-sans">
+      <Link
+        className="flex items-center px-5 mb-3 font-noto-sans"
+        to="/recipes"
+        relative="path"
+      >
+        <IoIosArrowRoundBack size={35} className="text-orange" />
+        <span className="text-lg font-medium hover:underline hover:scale-105 active:scale-75">
+          {" "}
+          Back to <span className="text-orange">Recipes</span>
+        </span>
+      </Link>
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold flex items-center justify-center">
           <span className="mr-3">I</span>
@@ -43,7 +44,7 @@ const Favorite = () => {
             <div className="p-4">
               <h2 className="text-2xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-600 mb-4">{recipe.description}</p>
-              <button className="px-4 py-2 bg-orange-500 text-white rounded-md shadow-md hover:bg-orange-600">
+              <button className="px-4 py-2 bg-orange text-white rounded-md shadow-md hover:bg-orange-600">
                 View Recipe
               </button>
             </div>
