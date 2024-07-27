@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+//Load intial item from local-storage
+const intialFav = JSON.parse(localStorage.getItem("favoriteRecipes")) || [];
 
 const favoriteSlice = createSlice({
-  name: 'favorite',
-  initialState,
+  name: "favorite",
+  initialState: intialFav,
   reducers: {
     addFavorite: (state, action) => {
       const recipe = action.payload;
@@ -13,9 +14,11 @@ const favoriteSlice = createSlice({
         return state.filter((item) => item.id !== recipe.id);
       }
       state.push(recipe);
+      // Save updated state to localStorage
+      localStorage.setItem("favoriteRecipes", JSON.stringify(state));
     },
   },
 });
 
-export const { addFavorite } = favoriteSlice.actions;
+export const { addFavorite, removeFavorite } = favoriteSlice.actions;
 export default favoriteSlice.reducer;

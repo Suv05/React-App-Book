@@ -1,12 +1,10 @@
 import { GrFavorite } from "react-icons/gr";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Favorite = () => {
   const favoriteRecipes = useSelector((state) => state.favorite);
-  const location = useLocation();
-  console.log("favorite:", location);
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4 font-noto-sans">
