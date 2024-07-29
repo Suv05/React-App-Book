@@ -1,10 +1,19 @@
 import { GrFavorite } from "react-icons/gr";
 import { useSelector } from "react-redux";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { useEffect, useState } from "react";
 
 const Favorite = () => {
   const favoriteRecipes = useSelector((state) => state.favorite);
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const storedFav = JSON.parse(localStorage.getItem("favoriteRecipes"));
+    if (storedFav) {
+      setFavorites(storedFav);
+    }
+  }, [favoriteRecipes]);
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4 font-noto-sans">
@@ -29,7 +38,7 @@ const Favorite = () => {
         </h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {favoriteRecipes.map((recipe) => (
+        {favorites.map((recipe) => (
           <div
             key={recipe.id}
             className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
