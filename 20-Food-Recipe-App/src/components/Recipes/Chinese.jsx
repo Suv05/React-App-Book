@@ -9,12 +9,7 @@ import { addFavorite } from "../../Redux Store/features/favoriteSlice";
 
 export async function loader() {
   try {
-    const cachedData = localStorage.getItem("chineseData");
-    if (cachedData) {
-      return defer({ data: JSON.parse(cachedData) });
-    }
-    const data = await fetchChinese("https://chinese-food-db.p.rapidapi.com/");
-    localStorage.setItem("chineseData", JSON.stringify(data));
+    const data = fetchChinese("https://chinese-food-db.p.rapidapi.com/");
     return defer({ data }); // Ensure correct structure
   } catch (error) {
     console.error(error);
