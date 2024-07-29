@@ -11,14 +11,16 @@ const favoriteSlice = createSlice({
       const recipe = action.payload;
       const existingRecipe = state.find((item) => item.id === recipe.id);
       if (existingRecipe) {
-        return state.filter((item) => item.id !== recipe.id);
+        const updatedState = state.filter((item) => item.id !== recipe.id);
+        localStorage.setItem("favoriteRecipes", JSON.stringify(updatedState));
+        return updatedState;
       }
-      state.push(recipe);
-      // Save updated state to localStorage
-      localStorage.setItem("favoriteRecipes", JSON.stringify(state));
+      const updatedState = [...state, recipe];
+      localStorage.setItem("favoriteRecipes", JSON.stringify(updatedState));
+      return updatedState;
     },
   },
 });
 
-export const { addFavorite, removeFavorite } = favoriteSlice.actions;
+export const { addFavorite } = favoriteSlice.actions;
 export default favoriteSlice.reducer;
