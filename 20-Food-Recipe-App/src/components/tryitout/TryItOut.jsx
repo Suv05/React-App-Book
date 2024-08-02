@@ -1,10 +1,21 @@
+import { useState, Suspense } from "react";
+import {
+  Link,
+  useLoaderData,
+  defer,
+  Await,
+  useLocation,
+} from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
+
+import { GrFavorite } from "react-icons/gr";
 import { CiSearch } from "react-icons/ci";
 import { PiChefHatLight } from "react-icons/pi";
-import { useState, Suspense } from "react";
-import { Link, useLoaderData, json, defer, Await } from "react-router-dom";
-import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
+import { IoMdClose } from "react-icons/io";
+
 import Spinner from "../pages/Spinner";
-import { GrFavorite } from "react-icons/gr";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
@@ -28,7 +39,6 @@ export async function loader({ request }) {
 }
 
 function TryItOut() {
-  const [active, setActive] = useState("");
   const keyWords = [
     // Add other keywords as needed
     "appetizer",
@@ -80,31 +90,82 @@ function TryItOut() {
   ];
 
   const { data } = useLoaderData();
+  const location = useLocation();
+
+  const [active, setActive] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [searchResult, setSearchResult] = useState(null);
+  const [searchError, setSearchError] = useState(null);
 
   const handelOnClick = (keyWord) => {
     setActive(keyWord);
   };
+
+  const onSubmit = async (formData) => {
+    try {
+      const result = await fetchApi(
+        `https://low-carb-recipes.p.rapidapi.com/search?name=${formData.recipe}`
+      );
+      setSearchResult(result);
+      setSearchError(null);
+    } catch (error) {
+      setSearchResult(null);
+      setSearchError("Failed to fetch recipes");
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <div className="flex justify-center items-center mb-4">
         <div className="flex mt-2 mb-3">
-          <input
-            type="text"
-            placeholder="Search recipes"
-            className="w-96 rounded-2xl focus:outline-none focus:ring-0 bg-[#f5f5f5] py-1 px-2 me-2"
-          />
-          <span className="rounded-full bg-neutral-100 py-2 px-2 active:scale-75 hover:scale-105">
-            <button>
-              <CiSearch size={20} />
-            </button>
-          </span>
+          <form onSubmit={handleSubmit(onSubmit)} className="relative">
+            {errors.recipe && (
+              <div className="absolute top-[-3rem] left-0 flex items-center justify-center w-full">
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-md w-96 flex items-center">
+                  <p className="flex-grow">
+                    <strong className="font-bold">Error:</strong> This field is
+                    required
+                  </p>
+                  <button className="ml-2">
+                    <IoMdClose size={18} />
+                  </button>
+                </div>
+              </div>
+            )}
+            <input
+              type="text"
+              placeholder="Search recipes"
+              className={`w-96 rounded-2xl focus:outline-none focus:ring-1 bg-[#f5f5f5] py-2 px-3 me-2 ${
+                errors.recipe ? "border border-red-500" : ""
+              }`}
+              {...register("recipe", { required: true })}
+            />
+            <span className="rounded-full bg-neutral-100 py-2 px-2">
+              <button
+                type="submit"
+                className="active:scale-75 hover:scale-110 hover:text-orange"
+              >
+                <CiSearch size={20} />
+              </button>
+            </span>
+          </form>
         </div>
       </div>
       {/* keywords for recipe search */}
 
       <div className="flex flex-wrap justify-center items-center gap-4 font-noto-sans px-5 mb-8">
         {keyWords.map((i) => (
-          <Link to={`?tags=${i}`} key={i} onClick={() => handelOnClick(i)}>
+          <Link
+            to={`?tags=${i}`}
+            key={i}
+            onClick={() => handelOnClick(i)}
+            state={{type:i}}
+          >
             <p
               className={`px-4 py-2 rounded-full border-2 border-orange whitespace-nowrap ${
                 active === i
@@ -122,11 +183,20 @@ function TryItOut() {
       <Suspense fallback={<Spinner />}>
         <Await resolve={data}>
           {(item) => {
+            const recipes = searchResult || item;
+            if (searchError) {
+              return (
+                <div className="flex justify-center items-center w-full">
+                  <p className="text-2xl font-bold my-7 text-orange">
+                    {searchError}
+                  </p>
+                </div>
+              );
+            }
             return (
               <div className="grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 gap-4 px-5 mb-12">
-                {Array.isArray(item) ? (
-                  item.length > 0 ? (
-                    item.map((i) => (
+                {Array.isArray(recipes) && recipes.length > 0
+                  ? recipes.map((i) => (
                       <div
                         key={i.id}
                         className="relative bg-slate-200 rounded-t-xl px-3 pt-1 flex flex-col justify-between"
@@ -144,7 +214,7 @@ function TryItOut() {
                           <h1 className="text-lg font-bold mb-1">{i.name}</h1>
                         </div>
                         <div className="bg-zinc-950 rounded-3xl text-white mb-3 mt-auto">
-                          <Link to={`${i.id}`}>
+                          <Link to={`${i.id}`} state={location.state?.type}>
                             <button className="pl-2 pb-0.5 flex justify-between w-full items-center hover:bg-zinc-800 transition-transform transform hover:scale-105 active:translate-y-1 hover:rounded-md">
                               <span className="text-lg font-extralight">
                                 See Recipe
@@ -157,15 +227,7 @@ function TryItOut() {
                         </div>
                       </div>
                     ))
-                  ) : null
-                ) : (
-                  <div className="flex justify-center items-center w-full">
-                    <p className="text-2xl font-bold my-7">
-                      Error fetching{" "}
-                      <span className="text-orange">recipes</span>
-                    </p>
-                  </div>
-                )}
+                  : null}
               </div>
             );
           }}

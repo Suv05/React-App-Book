@@ -1,5 +1,11 @@
 import { Suspense } from "react";
-import { Link,useLoaderData, Await, defer } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  Await,
+  defer,
+  useLocation,
+} from "react-router-dom";
 import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
 import { IoIosArrowRoundBack, IoIosMan } from "react-icons/io";
 import { RiBowlLine } from "react-icons/ri";
@@ -39,6 +45,7 @@ export async function loader({ params }) {
 }
 function TryitoutDetails({}) {
   const { data } = useLoaderData();
+  const location = useLocation();
 
   return (
     <>
@@ -73,8 +80,9 @@ function TryitoutDetails({}) {
       </div>
       <Link
         className="flex items-center px-5 mb-3 font-noto-sans"
-        to=".."
+        to={`/recipes/tryitout?tags=${location.state}`}
         relative="path"
+        state={{ type: location.state }}
       >
         <IoIosArrowRoundBack size={35} className="text-orange" />
         <span className="text-lg font-medium hover:underline hover:scale-105 active:scale-75">
@@ -96,54 +104,54 @@ function TryitoutDetails({}) {
                       </h1>
                     </div>
                     <div className="flex space-x-6">
-                      <p className="flex items-center">
+                      <div className="flex items-center">
                         <span className="px-1 py-1 rounded-full bg-slate-200 me-2">
                           <IoIosMan
                             size={25}
                             className="text-bold text-orange mr-1"
                           />
                         </span>
-                        <p>
+                        <div>
                           <p className="text-zinc-400 text-sm font-medium">
                             Servings
                           </p>
                           <p className="font-semibold">
                             {item.servings} Persons
                           </p>
-                        </p>
-                      </p>
-                      <p className="flex items-center">
+                        </div>
+                      </div>
+                      <div className="flex items-center">
                         <span className="px-1 py-1 rounded-full bg-slate-200 me-2">
                           <RiBowlLine
                             size={25}
                             className="text-bold text-orange mr-1"
                           />
                         </span>
-                        <p>
+                        <div>
                           <p className="text-zinc-400 text-sm font-medium">
                             Prep Time
                           </p>
                           <p className="font-semibold">
                             {item.prepareTime} Minutes
                           </p>
-                        </p>
-                      </p>
-                      <p className="flex items-center">
+                        </div>
+                      </div>
+                      <div className="flex items-center">
                         <span className="px-1 py-1 rounded-full bg-slate-200 me-2">
                           <PiChefHatLight
                             size={25}
                             className="text-bold text-orange mr-1"
                           />
                         </span>
-                        <p>
+                        <div>
                           <p className="text-zinc-400 text-sm font-medium">
                             Cook Time
                           </p>
                           <p className="font-semibold">
                             {item.cookTime} Minutes
                           </p>
-                        </p>
-                      </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   {/* item image starts here */}
