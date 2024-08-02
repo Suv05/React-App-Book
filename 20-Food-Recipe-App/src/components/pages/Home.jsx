@@ -4,26 +4,26 @@ import {
   PiMedal,
   PiBowlFoodThin,
 } from "react-icons/pi";
-import {CiUser, CiHeart, CiClock1 } from "react-icons/ci";
+import { CiUser, CiHeart, CiClock1 } from "react-icons/ci";
 import { SiTicktick } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 function Home({}) {
   return (
     <>
-      <div className="px-5 rounded-lg font-noto-sans mb-8">
-        <div className="myImg rounded-lg font-noto-sans px-10 pt-12 grid grid-cols-2 mb-6">
+      <div className="px-4 sm:px-5 rounded-lg font-noto-sans mb-8">
+        <div className="myImg rounded-lg font-noto-sans sm:px-10 pt-12 grid grid-cols-1 sm:grid-cols-2 mb-6">
           <div className="mb-8">
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-4xl sm:text-5xl font-bold">
               Adventure of <span className="text-orange mt-2">Delicacies</span>
             </h1>
-            <p className="mt-2 text-zinc-700 px-1 py-3 mb-10">
+            <p className="mt-2 text-zinc-700 px-1 py-3 mb-10 text-base sm:text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
               vero dignissimos ipsam eius quia praesentium tempore.
             </p>
             <div className="px-2">
               <Link to="/recipes">
-                <button className="bg-zinc-900 text-white py-2 px-6 flex rounded-lg hover:bg-zinc-800 transition-transform transform hover:scale-105 active:translate-y-1 hover:rounded-md">
+                <button className="bg-zinc-900 text-white py-2 px-4 sm:px-6 flex rounded-lg hover:bg-zinc-800 transition-transform transform hover:scale-105 active:translate-y-1 hover:rounded-md">
                   Explore Recipes
                   <span>
                     <PiChefHatLight size={22} className="ml-2 mt-0.5" />
@@ -33,10 +33,10 @@ function Home({}) {
             </div>
           </div>
         </div>
-        {/* below image componet goes here */}
-        <div className="flex flex-row rounded-xl">
-          <div className="basis-3/4 bg-[#eeeeee] rounded-xl px-5 pb-4">
-            <div className="grid grid-cols-3 gap-3">
+        {/* below image component goes here */}
+        <div className="flex flex-col sm:flex-row rounded-xl">
+          <div className="basis-full sm:basis-3/4 bg-[#eeeeee] rounded-xl px-4 sm:px-5 pb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="pt-6">
                 <h1 className="mb-6 text-black font-bold">
                   <CiUser size={25} />
@@ -68,7 +68,7 @@ function Home({}) {
               </div>
             </div>
           </div>
-          <div className="basis-1/4 bg-[#fefefe] mybox rounded-xl mx-2">
+          <div className="basis-full sm:basis-1/4 bg-[#fefefe] mybox rounded-xl mx-2 mt-4 sm:mt-0">
             <img
               src="https://media.istockphoto.com/id/1085446276/photo/homemade-french-coq-au-vin-chicken.webp?b=1&s=170667a&w=0&k=20&c=FyuCSuYbQCZmNLvNqw8briNoaEtY7LPl4HCn5-xvV1w="
               alt="food image"
@@ -81,11 +81,11 @@ function Home({}) {
             </p>
           </div>
         </div>
-        {/* {another part of web page} */}
+        {/* another part of the web page */}
         <div className="mt-12">
-          <center className="leading-relaxed" style={{ padding: "0 13rem" }}>
-            <h1 className="text-3xl font-noto-sans font-semibold mb-1">
-              Become a true <span className="text-orange"> chef</span> with our
+          <center className="leading-relaxed px-4 sm:px-20">
+            <h1 className="text-2xl sm:text-3xl font-noto-sans font-semibold mb-1">
+              Become a true <span className="text-orange">chef</span> with our
               recipes.
             </h1>
             <p>
@@ -93,8 +93,8 @@ function Home({}) {
             </p>
           </center>
         </div>
-        <div className="mt-3 grid grid-cols-4 gap-4 px-5 pb-12">
-          <div className="bg-zinc-200 rounded-xl px-2 pt-2 mb-12">
+        <div className="mt-3 grid grid-cols-1 sm:grid-cols-4 gap-4 px-4 sm:px-5 pb-12">
+          <div className="bg-zinc-200 rounded-xl px-2 pt-2 mb-3">
             <img
               src="https://media.istockphoto.com/id/1436956975/photo/chef-pouring-special-sauce-on-pork-ribs-in-the-kitchen.webp?b=1&s=170667a&w=0&k=20&c=dqjedk3BRtemi6aGrR62j4_HQ7NVZIsGNyTHOedV4_o="
               alt=""
@@ -108,8 +108,8 @@ function Home({}) {
               Easy To follow recipes
             </button>
           </div>
-          <div className="bg-orange mt-12 rounded-xl mb-6">
-            <p className="text-white font-semibold text-xl px-3 pt-3">
+          <div className="bg-orange mt-6 rounded-xl mb-2 p-4">
+            <p className="text-white font-semibold text-lg sm:text-xl px-3 pt-3">
               "Cooking has never been this easy!"
             </p>
             <p className="text-white text-base px-4 mt-3 font-semibold">
@@ -124,10 +124,8 @@ function Home({}) {
                 className="me-2 rounded-full px-1 py-1 text-orange bg-zinc-200 mt-1"
               />
               <section className="text-sm font-semibold">
-                Acheivements
-                <p className="text-xs font-thin">
-                  cook two foods today
-                </p>
+                Achievements
+                <p className="text-xs font-thin">cook two foods today</p>
               </section>
             </div>
             <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
@@ -137,9 +135,7 @@ function Home({}) {
               />
               <section className="text-sm font-semibold">
                 Live
-                <p className="text-xs font-thin">
-                  Chef Mark jhonson
-                </p>
+                <p className="text-xs font-thin">Chef Mark Johnson</p>
               </section>
             </div>
             <div className="bg-white flex px-1 py-1 mb-2 rounded-lg mt-2">
@@ -149,9 +145,7 @@ function Home({}) {
               />
               <section className="text-sm font-semibold">
                 Today's recipe
-                <p className="text-xs font-thin">
-                  Spoghati Chicken
-                </p>
+                <p className="text-xs font-thin">Spaghetti Chicken</p>
               </section>
             </div>
           </div>
@@ -159,7 +153,7 @@ function Home({}) {
             <img
               src="https://media.istockphoto.com/id/1217012868/photo/handsome-young-african-chef-standing-in-professional-kitchen-in-restaurant-preparing-a-meal.webp?b=1&s=170667a&w=0&k=20&c=pcVtkj_n-iKi8xbb5NylgStFk4zN2EF9pYmvZKd-Kno="
               alt="chef"
-              className="rounded-md"
+              className="rounded-md w-full h-auto"
             />
             <section
               style={{ float: "right" }}
@@ -167,31 +161,31 @@ function Home({}) {
             >
               Live
             </section>
-            <p className="bg-white text-lg font-semibold px-2 mt-2 mb-2 py-2 rounded-xl">
+            <p className="bg-white text-lg font-semibold px-2 mt-2 mb-2 py-2 rounded-xl text-center sm:text-left">
               Cook with Master Chefs
             </p>
           </div>
         </div>
-        <div className="myfoodImg  rounded-lg">
-          <div>
-            <h1 className="px-12 text-3xl font-extrabold pt-12">
+        <div className="myfoodImg rounded-lg">
+          <div className="px-4 sm:px-12">
+            <h1 className="text-3xl font-extrabold pt-12">
               Mediterranea <span className="text-orange">Grilled</span>{" "}
               <span className="text-zinc-200">Chicken</span>
             </h1>
-            <p className="text-small font-medium mt-4 px-12 pb-10 ">
+            <p className="text-small font-medium mt-4 pb-10">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Accusamus pariatur repudiandae quae? Repellendus maiores error
               accusantium facilis aliquid. Itaque cumque accusamus
               necessitatibus.
             </p>
-            <div className="flex flex-1 px-12 pb-14 text-white">
-              <p className="flex me-8">
+            <div className="flex flex-wrap px-0 sm:px-12 pb-14 text-white">
+              <p className="flex items-center me-8 mb-2 sm:mb-0">
                 <CiClock1 size={25} className="text-bold text-orange" />
-                <span>45 minutes</span>
+                <span className="ml-2">45 minutes</span>
               </p>
-              <p className="flex">
+              <p className="flex items-center">
                 <PiChefHatLight size={25} className="text-bold text-orange" />
-                <span>Chef Erik parker</span>
+                <span className="ml-2">Chef Erik Parker</span>
               </p>
             </div>
           </div>

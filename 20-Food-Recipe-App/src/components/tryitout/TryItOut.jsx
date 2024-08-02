@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form";
 
 import { fetchApi } from "../../API/tryitoutAPI/getByKeyword";
 
-import { GrFavorite } from "react-icons/gr";
 import { CiSearch } from "react-icons/ci";
 import { PiChefHatLight } from "react-icons/pi";
 import { IoMdClose } from "react-icons/io";
@@ -140,7 +139,7 @@ function TryItOut() {
             <input
               type="text"
               placeholder="Search recipes"
-              className={`w-96 rounded-2xl focus:outline-none focus:ring-1 bg-[#f5f5f5] py-2 px-3 me-2 ${
+              className={`sm:w-72 md:w-80 rounded-2xl focus:outline-none focus:ring-1 bg-[#f5f5f5] py-2 px-3 me-2 ${
                 errors.recipe ? "border border-red-500" : ""
               }`}
               {...register("recipe", { required: true })}
@@ -206,9 +205,9 @@ function TryItOut() {
                             src={i.image}
                             className="m-auto rounded-2xl mb-1 mt-2"
                           />
-                          <button className="absolute top-3 right-3 text-red-600 hover:text-orange transition-colors">
+                          {/* <button className="absolute top-3 right-3 text-red-600 hover:text-orange transition-colors">
                             <GrFavorite size={30} />
-                          </button>
+                          </button> */}
                         </div>
                         <div>
                           <h1 className="text-lg font-bold mb-1">{i.name}</h1>

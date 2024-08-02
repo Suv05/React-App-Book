@@ -1,8 +1,10 @@
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Link, Await, defer, useLoaderData } from "react-router-dom";
 import { fetchMexican } from "../../API/MexicanDB/getMexican";
 import { PiChefHatLight } from "react-icons/pi";
 import { GrFavorite } from "react-icons/gr";
+import { useDispatch } from "react-redux";
+import { addFavorite } from "../../Redux Store/features/favoriteSlice";
 import Spinner from "../pages/Spinner";
 
 export async function loader() {
@@ -22,6 +24,26 @@ export async function loader() {
 }
 function Mexican() {
   const { data } = useLoaderData();
+  const dispatch = useDispatch();
+  const [fav, setFav] = useState([]);
+
+  useEffect(() => {
+    const storedFav = JSON.parse(localStorage.getItem("favoriteMexiIds"));
+    if (storedFav) {
+      setFav(storedFav);
+    }
+  }, []);
+
+  const handelAddFavorite = (getRecipe) => {
+    dispatch(addFavorite(getRecipe));
+    setFav((prevFav) => {
+      const updatedFav = prevFav.includes(getRecipe.id)
+        ? prevFav.filter((id) => id !== getRecipe.id)
+        : [...prevFav, getRecipe.id];
+      localStorage.setItem("favoriteMexiIds", JSON.stringify(updatedFav));
+      return updatedFav;
+    });
+  };
   return (
     <Suspense fallback={<Spinner />}>
       <Await resolve={data}>
@@ -41,7 +63,14 @@ function Mexican() {
                           className="m-auto rounded-2xl mb-1 mt-2"
                           alt={i.title}
                         />
-                        <button className="absolute top-3 right-3 text-red-600 hover:text-orange transition-colors">
+                        <button
+                          className={`absolute top-3 right-3 rounded-full px-1 py-1 ${
+                            fav.includes(i.id)
+                              ? "bg-orange text-white"
+                              : "text-red-600 hover:text-orange transition-colors"
+                          }`}
+                          onClick={() => handelAddFavorite(i)}
+                        >
                           <GrFavorite size={30} />
                         </button>
                       </div>

@@ -4,7 +4,7 @@ export const fetchCocktail = async (url) => {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "b28bfe787dmsh6b10bc4222a3a4ap1bce90jsn94117385c7af",
+      "x-rapidapi-key": "470f560720msh34aac1c176dec2ap161364jsn880a6d9b2016",
       "x-rapidapi-host": "the-cocktail-db3.p.rapidapi.com",
     },
   };

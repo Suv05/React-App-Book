@@ -2,7 +2,7 @@ export const fetchChinese = async (url) => {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "ee6e4ee984msh235aca9ea990b5dp1b65c8jsnf5faf72169f7",
+      "x-rapidapi-key": "470f560720msh34aac1c176dec2ap161364jsn880a6d9b2016",
       "x-rapidapi-host": "chinese-food-db.p.rapidapi.com",
     },
   };
