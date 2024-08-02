@@ -4,7 +4,7 @@ import { SiLevelsdotfyi } from "react-icons/si";
 import { BsClockFill } from "react-icons/bs";
 import { PiChefHatLight } from "react-icons/pi";
 import { CiClock1 } from "react-icons/ci";
-import { fetchChinese } from "../../API/ChineseDB/getChinese";
+import { fetchVegan } from "../../API/VeganDB/getVegan";
 import { Suspense } from "react";
 import Spinner from "../pages/Spinner";
 
@@ -14,7 +14,7 @@ export async function loader({ params }) {
     return defer({ data: Promise.resolve([]) });
   }
   try {
-    const data = fetchChinese(
+    const data = fetchVegan(
       `https://the-vegan-recipes-db.p.rapidapi.com/${id}`
     );
     return defer({ data });
