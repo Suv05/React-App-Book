@@ -14,7 +14,7 @@ function About() {
             that drives us.
           </p>
           <img
-            src="https://media.istockphoto.com/id/1182493107/photo/fresh-crispy-pork-burgers-in-a-row-at-food-market.webp?b=1&s=170667a&w=0&k=20&c=T-cwNBp7ZO0keqRx1y5sQLJlF47zJ61UPyLQSjlSuUM="
+            src="https://media.istockphoto.com/id/542331706/photo/homemade-spicy-shrimp-tacos.webp?b=1&s=170667a&w=0&k=20&c=WUZHzzMAuQur3xuh4NVWUWZ77_PQqf3yCkoZ5Ftsfnk="
             alt="Culinary Stories"
             className="mx-auto rounded-lg shadow-lg"
           />

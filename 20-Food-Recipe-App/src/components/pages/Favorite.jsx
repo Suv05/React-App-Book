@@ -51,9 +51,12 @@ const Favorite = () => {
             <div className="p-4">
               <h2 className="text-2xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-600 mb-4">{recipe.description}</p>
-              <button className="px-4 py-2 bg-orange text-white rounded-md shadow-md hover:bg-orange-600">
-                View Recipe
-              </button>
+
+              <Link to={`/recipes/${recipe.id}`}>
+                <button className="px-4 py-2 bg-orange text-white rounded-md shadow-md hover:bg-orange-600">
+                  View Recipe
+                </button>
+              </Link>
             </div>
           </div>
         ))}

@@ -7,14 +7,9 @@ import Spinner from "../pages/Spinner";
 
 export async function loader() {
   try {
-    const cachedData = localStorage.getItem("veganData");
-    if (cachedData) {
-      return defer({ data: JSON.parse(cachedData) });
-    }
-    const data = await fetchVegan(
+    const data =fetchVegan(
       "https://the-vegan-recipes-db.p.rapidapi.com/"
     );
-    localStorage.setItem("veganData", JSON.stringify(data));
     return defer({ data });
   } catch (err) {
     console.error(err.message);

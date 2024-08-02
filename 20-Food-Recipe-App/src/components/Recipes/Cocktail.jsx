@@ -7,14 +7,9 @@ import Spinner from "../pages/Spinner";
 
 export async function loader() {
   try {
-    const cachedData = localStorage.getItem("cocktailData");
-    if (cachedData) {
-      return defer({ data: JSON.parse(cachedData) });
-    }
-    const data = await fetchCocktail(
+    const data = fetchCocktail(
       "https://the-cocktail-db3.p.rapidapi.com/"
     );
-    localStorage.setItem("cocktailData", JSON.stringify(data));
     return defer({ data });
   } catch (err) {
     console.error(err.message);
