@@ -2,7 +2,7 @@ export const fetchApi = async (url) => {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "b28bfe787dmsh6b10bc4222a3a4ap1bce90jsn94117385c7af",
+      "x-rapidapi-key": "ee6e4ee984msh235aca9ea990b5dp1b65c8jsnf5faf72169f7",
       "x-rapidapi-host": "low-carb-recipes.p.rapidapi.com",
     },
   };
