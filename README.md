@@ -1,4 +1,4 @@
-# React Projects 2.5.O
+# React Projects 2.O
 ### 1-Multi Section
 ![Screenshot 2024-06-21 202756](https://github.com/Suv05/React-App-Book/assets/113111710/d652822b-0bf2-4ad1-9107-faec65eb5516)
 
